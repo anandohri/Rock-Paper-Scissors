@@ -2,7 +2,7 @@ import random
 import string
 
 
-possible_hands = ['Rock', 'Paper', 'Scissors']
+possible_hands = ['rock', 'paper', 'scissors']
 
 
 class RockPaperScissor:
@@ -30,34 +30,18 @@ class RockPaperScissor:
                 self.validate_my_hand()
 
                 self.generate_sys_hand()
+                print('System Choice: ' + self.sys_hand)
 
-                if string.lower(self.my_hand) == 'rock':
-                    if string.lower(self.sys_hand) == 'paper':
-                        print('You loose')
-                        self.score_keeping('sys')
-                    elif string.lower(self.sys_hand) == 'scissors':
-                        print('You win')
-                        self.score_keeping('me')
-                    else:
-                        print('Draw')
-                elif string.lower(self.my_hand) == 'paper':
-                    if string.lower(self.sys_hand) == 'scissors':
-                        print('You loose')
-                        self.score_keeping('sys')
-                    elif string.lower(self.sys_hand) == 'rock':
-                        print('You win')
-                        self.score_keeping('me')
-                    else:
-                        print('Draw')
-                elif string.lower(self.my_hand) == 'scissors':
-                    if string.lower(self.sys_hand) == 'rock':
-                        print('You loose')
-                        self.score_keeping('sys')
-                    elif string.lower(self.sys_hand) == 'paper':
-                        print('You win')
-                        self.score_keeping('me')
-                    else:
-                        print('Draw')
+                if string.lower(self.my_hand) == self.sys_hand:
+                    print('Draw')
+                elif (string.lower(self.my_hand) == 'rock' and self.sys_hand == 'scissors') or \
+                        (string.lower(self.my_hand) == 'paper' and self.sys_hand == 'rock') or \
+                        (string.lower(self.my_hand) == 'scissors' and self.sys_hand == 'paper'):
+                    print('You win')
+                    self.score_keeping('me')
+                else:
+                    print('You loose')
+                    self.score_keeping('sys')
 
                 wanna_play = raw_input('Wanna play again(y/n): ')
 
